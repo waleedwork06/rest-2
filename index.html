@@ -105,26 +105,35 @@
       </div>
     </section>
 <style>
-	body {
+html, body {
   overflow-x: hidden;
   overflow-y: auto;
-}
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0,0,0,0.4);
-  pointer-events: none; /* ✅ add this line */
+  height: auto;
 }
 
-	@media (max-width: 768px) {
-  .slider-item {
-    height: auto;
-    min-height: 100vh;
+.home-slider.owl-carousel {
+  overflow: visible !important;
+}
+
+.slider-item {
+  position: relative;
+  height: auto !important;
+  min-height: 100vh;
+}
+
+.overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .img {
+    background-attachment: scroll !important;
   }
 }
+
 </style>
     <section class="ftco-intro">
     	<div class="container-wrap">
