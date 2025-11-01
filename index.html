@@ -104,7 +104,22 @@
         </div>
       </div>
     </section>
-<style>@media (max-width: 768px) {
+<style>
+	body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  pointer-events: none; /* ✅ add this line */
+}
+
+	@media (max-width: 768px) {
   .slider-item {
     height: auto;
     min-height: 100vh;
