@@ -19,85 +19,96 @@
   });
 
   // Scrollax
+ // 🔹 Scrollax — sirf desktop par chalayega
+if ($(window).width() > 768) {
   $.Scrollax();
+}
 
+// 🔹 Full height fix
+var fullHeight = function() {
+  // height ko min-height se replace kiya
+  $('.js-fullheight').css('min-height', $(window).height());
+  $(window).resize(function() {
+    $('.js-fullheight').css('min-height', $(window).height());
+  });
+};
+fullHeight();
 
-	var fullHeight = function() {
+// 🔹 Loader
+var loader = function() {
+  setTimeout(function() {
+    if ($('#ftco-loader').length > 0) {
+      $('#ftco-loader').removeClass('show');
+    }
+  }, 1);
+};
+loader();
 
-		$('.js-fullheight').css('height', $(window).height());
-		$(window).resize(function(){
-			$('.js-fullheight').css('height', $(window).height());
-		});
+// 🔹 Carousel setup
+var carousel = function() {
+  // Home slider
+  $('.home-slider').owlCarousel({
+    loop: true,
+    autoplay: true,
+    margin: 0,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    nav: false,
+    autoplayHoverPause: false,
+    items: 1,
+    touchDrag: true,   // ✅ mobile scroll ke liye important
+    mouseDrag: true,   // ✅ desktop drag ke liye
+    navText: [
+      "<span class='ion-md-arrow-back'></span>",
+      "<span class='ion-chevron-right'></span>"
+    ],
+    responsive: {
+      0: {
+        items: 1,
+        nav: false
+      },
+      600: {
+        items: 1,
+        nav: false
+      },
+      1000: {
+        items: 1,
+        nav: false
+      }
+    }
+  });
 
-	};
-	fullHeight();
+  // Work carousel (agar use ho raha hai)
+  $('.carousel-work').owlCarousel({
+    autoplay: true,
+    center: true,
+    loop: true,
+    items: 1,
+    margin: 30,
+    stagePadding: 0,
+    nav: true,
+    navText: [
+      '<span class="ion-ios-arrow-back">',
+      '<span class="ion-ios-arrow-forward">'
+    ],
+    responsive: {
+      0: {
+        items: 1,
+        stagePadding: 0
+      },
+      600: {
+        items: 2,
+        stagePadding: 50
+      },
+      1000: {
+        items: 3,
+        stagePadding: 100
+      }
+    }
+  });
+};
+carousel();
 
-	// loader
-	var loader = function() {
-		setTimeout(function() { 
-			if($('#ftco-loader').length > 0) {
-				$('#ftco-loader').removeClass('show');
-			}
-		}, 1);
-	};
-	loader();
-
-	// Scrollax
-   $.Scrollax();
-
-	var carousel = function() {
-		$('.home-slider').owlCarousel({
-	    loop:true,
-	    autoplay: true,
-	    margin:0,
-	    animateOut: 'fadeOut',
-	    animateIn: 'fadeIn',
-	    nav:false,
-	    autoplayHoverPause: false,
-	    items: 1,
-	    navText : ["<span class='ion-md-arrow-back'></span>","<span class='ion-chevron-right'></span>"],
-	    responsive:{
-	      0:{
-	        items:1,
-	        nav:false
-	      },
-	      600:{
-	        items:1,
-	        nav:false
-	      },
-	      1000:{
-	        items:1,
-	        nav:false
-	      }
-	    }
-		});
-		$('.carousel-work').owlCarousel({
-			autoplay: true,
-			center: true,
-			loop: true,
-			items:1,
-			margin: 30,
-			stagePadding:0,
-			nav: true,
-			navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
-			responsive:{
-				0:{
-					items: 1,
-					stagePadding: 0
-				},
-				600:{
-					items: 2,
-					stagePadding: 50
-				},
-				1000:{
-					items: 3,
-					stagePadding: 100
-				}
-			}
-		});
-
-	};
-	carousel();
 
 	$('nav .dropdown').hover(function(){
 		var $this = $(this);
